@@ -3,22 +3,56 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>
 		js has quirks
 	</title>
+
+	<style>
+		canvas{
+			padding: 0;
+			margin: auto;
+			display: block;
+		}
+		body{
+			text-align: center;
+		}
+
+	</style>
 </head>
 <body>
 
-<canvas id="canvas"></canvas>
+<canvas id="canvas" style="border:3px solid red;"></canvas>
+<br>
+<span style="font-size:80px">background color:<span>
+<br>
+<input type="number" min="0" max="255" id="red" style="width:200px; height:200px; font-size:80px" value="0"></input>
+<input type="number" min="0" max="255" id="green" style="width:200px; height:200px; font-size:80px" value="0" ="0"></input>
+<input type="number" min="0" max="255" id="blue" style="width:200px; height:200px; font-size:80px" value="0"></input>
+
+<button style="width:400px; height:200px; font-size:80px;" onclick="alert('Please rightclick the image and press save image')">download</button>
 
 <script>
+let foreground;
+let r = document.getElementById("red")
+let g = document.getElementById("green")
+let b = document.getElementById("blue")
+let canvas = document.getElementById("canvas")
+
+
 function setup(){
-	canvas.width = window.innerHeight-50;
-	canvas.height = canvas.width;
+
+	foreground = new Image();
+	foreground.src = "Quirk has quirks.png"
 }
 
 function draw(){
-	console.log("hey")
+	canvas.width = foreground.width
+	canvas.height = foreground.height
+
+	background(r.value,g.value,b.value)
+	blit(0,0,canvas.width,canvas.height,foreground)
 }
 </script>
 <script src="graphics.js" type="text/javascript"></script>

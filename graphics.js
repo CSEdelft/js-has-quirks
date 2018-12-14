@@ -134,7 +134,6 @@ window.onload = function(){
 	eventloop();
 }
 
-
 //start setup asap
 setup();
 
