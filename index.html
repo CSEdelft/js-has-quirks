@@ -63,7 +63,25 @@ r.addEventListener("change",function(){
 	if(b.value.toString() == ""){
 		b.value = 0;
 	}
+	if(r.value < 0){
+		r.value = 0;
+	}
+	if(g.value < 0){
+		g.value = 0;
+	}
+	if(b.value < 0){
+		b.value = 0;
+	}
 
+	if(r.value > 255){
+		r.value = 255;
+	}
+	if(g.value < 255){
+		g.value = 255;
+	}
+	if(b.value < 255){
+		b.value = 255;
+	}
 })
 
 g.addEventListener("change",function(){
@@ -78,7 +96,25 @@ g.addEventListener("change",function(){
 	if(b.value.toString() == ""){
 		b.value = 0;
 	}
+	if(r.value < 0){
+		r.value = 0;
+	}
+	if(g.value < 0){
+		g.value = 0;
+	}
+	if(b.value < 0){
+		b.value = 0;
+	}
 
+	if(r.value > 255){
+		r.value = 255;
+	}
+	if(g.value < 255){
+		g.value = 255;
+	}
+	if(b.value < 255){
+		b.value = 255;
+	}
 })
 
 g.addEventListener("change",function(){
@@ -94,7 +130,25 @@ g.addEventListener("change",function(){
 	if(b.value.toString() == ""){
 		b.value = 0;
 	}
+	if(r.value < 0){
+		r.value = 0;
+	}
+	if(g.value < 0){
+		g.value = 0;
+	}
+	if(b.value < 0){
+		b.value = 0;
+	}
 
+	if(r.value > 255){
+		r.value = 255;
+	}
+	if(g.value < 255){
+		g.value = 255;
+	}
+	if(b.value < 255){
+		b.value = 255;
+	}
 })
 
 function hexToRgb(hex) {
@@ -139,7 +193,25 @@ hex.addEventListener("change",function(){
 		b.value = 0;
 	}
 
+	if(r.value < 0){
+		r.value = 0;
+	}
+	if(g.value < 0){
+		g.value = 0;
+	}
+	if(b.value < 0){
+		b.value = 0;
+	}
 
+	if(r.value > 255){
+		r.value = 255;
+	}
+	if(g.value < 255){
+		g.value = 255;
+	}
+	if(b.value < 255){
+		b.value = 255;
+	}
 })
 
 function hex2rgb(hex) {
