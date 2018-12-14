@@ -76,10 +76,10 @@ r.addEventListener("change",function(){
 	if(r.value > 255){
 		r.value = 255;
 	}
-	if(g.value < 255){
+	if(g.value > 255){
 		g.value = 255;
 	}
-	if(b.value < 255){
+	if(b.value > 255){
 		b.value = 255;
 	}
 })
@@ -109,10 +109,10 @@ g.addEventListener("change",function(){
 	if(r.value > 255){
 		r.value = 255;
 	}
-	if(g.value < 255){
+	if(g.value > 255){
 		g.value = 255;
 	}
-	if(b.value < 255){
+	if(b.value > 255){
 		b.value = 255;
 	}
 })
@@ -143,10 +143,10 @@ g.addEventListener("change",function(){
 	if(r.value > 255){
 		r.value = 255;
 	}
-	if(g.value < 255){
+	if(g.value > 255){
 		g.value = 255;
 	}
-	if(b.value < 255){
+	if(b.value > 255){
 		b.value = 255;
 	}
 })
@@ -173,6 +173,7 @@ hex.addEventListener("change",function(){
 	}
 
 	let res = hexToRgb(hex.value)
+	console.log(res)
 
 	if(res == null){
 		alert("invalid hex code")
@@ -206,10 +207,10 @@ hex.addEventListener("change",function(){
 	if(r.value > 255){
 		r.value = 255;
 	}
-	if(g.value < 255){
+	if(g.value > 255){
 		g.value = 255;
 	}
-	if(b.value < 255){
+	if(b.value > 255){
 		b.value = 255;
 	}
 })
