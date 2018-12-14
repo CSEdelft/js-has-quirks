@@ -27,6 +27,7 @@
 <br>
 <span style="font-size:80px">background color:<span>
 <br>
+<input type="text" min="0" max="255" id="hex" style="width:400px; height:200px; font-size:80px; margin-right:50px;" value="0"></input>
 <input type="number" min="0" max="255" id="red" style="width:200px; height:200px; font-size:80px" value="0"></input>
 <input type="number" min="0" max="255" id="green" style="width:200px; height:200px; font-size:80px" value="0" ="0"></input>
 <input type="number" min="0" max="255" id="blue" style="width:200px; height:200px; font-size:80px" value="0"></input>
@@ -38,13 +39,121 @@ let foreground;
 let r = document.getElementById("red")
 let g = document.getElementById("green")
 let b = document.getElementById("blue")
+let hex = document.getElementById("hex")
+
 let canvas = document.getElementById("canvas")
 
+hex.value = rgb2hex	(r.value,g.value,b.value)
 
 function setup(){
 
 	foreground = new Image();
 	foreground.src = "Quirk has quirks.png"
+}
+
+r.addEventListener("change",function(){
+	hex.value = rgb2hex	(r.value,g.value,b.value)
+
+	if(r.value.toString() == ""){
+		r.value = 0;
+	}
+	if(g.value.toString() == ""){
+		g.value = 0;
+	}
+	if(b.value.toString() == ""){
+		b.value = 0;
+	}
+
+})
+
+g.addEventListener("change",function(){
+	hex.value = rgb2hex	(r.value,g.value,b.value)
+
+	if(r.value.toString() == ""){
+		r.value = 0;
+	}
+	if(g.value.toString() == ""){
+		g.value = 0;
+	}
+	if(b.value.toString() == ""){
+		b.value = 0;
+	}
+
+})
+
+g.addEventListener("change",function(){
+	hex.value = rgb2hex	(r.value,g.value,b.value)
+
+
+	if(r.value.toString() == ""){
+		r.value = 0;
+	}
+	if(g.value.toString() == ""){
+		g.value = 0;
+	}
+	if(b.value.toString() == ""){
+		b.value = 0;
+	}
+
+})
+
+function hexToRgb(hex) {
+    // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+        return r + r + g + g + b + b;
+    });
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
+hex.addEventListener("change",function(){
+
+	if(hex.value == ""){
+		hex.value = rgb2hex	(r.value,g.value,b.value)
+	}
+
+	let res = hexToRgb(hex.value)
+
+	if(res == null){
+		alert("invalid hex code")
+		return
+	}
+
+    r.value = res.r
+    g.value = res.g
+    b.value = res.b
+
+	if(r.value.toString() == ""){
+		r.value = 0;
+	}
+	if(g.value.toString() == ""){
+		g.value = 0;
+	}
+	if(b.value.toString() == ""){
+		b.value = 0;
+	}
+
+
+})
+
+function hex2rgb(hex) {
+    // long version
+    r = hex.match(/^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
+    if (r) {
+            return r.slice(1,4).map(function(x) { return parseInt(x, 16); });
+    }
+    // short version
+    r = hex.match(/^#([0-9a-f])([0-9a-f])([0-9a-f])$/i);
+    if (r) {
+            return r.slice(1,4).map(function(x) { return 0x11 * parseInt(x, 16); });
+    }
+    return null;
 }
 
 function draw(){
@@ -54,6 +163,13 @@ function draw(){
 	background(r.value,g.value,b.value)
 	blit(0,0,canvas.width,canvas.height,foreground)
 }
+
+function rgb2hex(red, green, blue) {
+    var rgb = blue | (green << 8) | (red << 16);
+    return '#' + (0x1000000 + rgb).toString(16).slice(1)
+}
+
+
 document.body.style.zoom = "25%" 
 </script>
 <script src="graphics.js" type="text/javascript"></script>
